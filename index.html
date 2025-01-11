@@ -24,7 +24,7 @@
       position: absolute;
       left: 0;
       right: 0;
-      height: 100px; /* Adjust this value to control the fade height */
+      height: 100px;
       pointer-events: none;
     }
     .hero-background::before {
@@ -42,6 +42,61 @@
     }
     .backdrop-blur-lg {
       backdrop-filter: blur(10px);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .image-loader {
+      position: relative;
+      background: #f3f4f6;
+      overflow: hidden;
+    }
+
+    .image-loader::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 200%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255,255,255,0.4) 50%,
+        transparent 100%
+      );
+      animation: loading 1.5s infinite;
+    }
+
+    @keyframes loading {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(100%);
+      }
+    }
+
+    .float-animation {
+      animation: floating 3s ease-in-out infinite;
+    }
+    
+    .float-animation-delayed {
+      animation: floating 3s ease-in-out 1.5s infinite;
+    }
+    
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
     }
   </style>
 </head>
@@ -69,7 +124,7 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="bg-white bg-opacity-10 backdrop-blur-lg p-6 rounded-lg inline-block">
           <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Empower Your Wellness Journey</h1>
-          <p class="text-lg md:text-xl text-cyan-100 mb-6">Hi, I’m Logen Dickey. I’m on a journey to transform my health, and I’m here to help you join me.</p>
+          <p class="text-lg md:text-xl text-cyan-100 mb-6">Hi, I'm Logen Dickey. I'm on a journey to transform my health, and I'm here to help you join me.</p>
           <a href="recommendations.html" class="inline-block bg-white text-cyan-600 px-8 py-3 rounded-lg hover:bg-gray-50 font-medium shadow-lg">
             Explore My Recommendations
           </a>
@@ -88,7 +143,7 @@
           <a href="about.html" class="text-cyan-600 hover:text-cyan-700 font-medium">Read More About My Story &rarr;</a>
         </div>
         <div class="flex items-center justify-center">
-          <img src="images/healthjourneytransformation1.jpg" alt="Health Journey Transformation Before and After Photo" class="rounded-lg shadow-lg">
+          <img src="images/healthjourneytransformation1.jpg" alt="Health Journey Transformation Before and After Photo" class="rounded-lg shadow-lg max-w-[300px] w-full">
         </div>
       </div>
     </section>
@@ -99,20 +154,45 @@
         <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">What I Recommend</h2>
         <div class="grid gap-8 md:grid-cols-2">
           <!-- Gut Health Triad -->
-          <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Gut Health Triad</h3>
-            <p class="text-gray-600 mb-4">
-              Your gut health affects energy, mood, immunity, and more. The Gut Health Triad is a powerful combo that can help improve digestion, nutrient absorption, and overall vitality.
-            </p>
-            <a href="recommendations.html" class="text-cyan-600 hover:text-cyan-700 font-medium">Learn More &rarr;</a>
+          <div class="float-animation bg-gradient-to-br from-cyan-50 to-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Gut Health Triad</h3>
+                <p class="text-gray-600 mb-4">
+                  Your gut health affects energy, mood, immunity, and more. The Gut Health Triad is a powerful combo that can help improve digestion, nutrient absorption, and overall vitality.
+                </p>
+                <a href="https://nucleogenex.com/details/173/DickeyL" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium" target="_blank">
+                  Learn More 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <div class="w-32 h-32 flex-shrink-0">
+                <img src="images/GutHealthTriad.png" alt="Gut Health Triad" class="w-full h-full object-contain rounded-lg transform transition-transform hover:scale-110 duration-300">
+              </div>
+            </div>
           </div>
+          
           <!-- Clarity Perfect Water System -->
-          <div class="bg-white p-8 rounded-lg shadow-lg">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Clarity Perfect Water System</h3>
-            <p class="text-gray-600 mb-4">
-              Enjoy filtered, alkaline, hydrogen-infused water at home. Improve hydration, taste, and overall wellness at an affordable price.
-            </p>
-            <a href="recommendations.html" class="text-cyan-600 hover:text-cyan-700 font-medium">Get the Details &rarr;</a>
+          <div class="float-animation-delayed bg-gradient-to-br from-cyan-50 to-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div class="flex flex-col md:flex-row gap-6 items-center">
+              <div class="flex-1">
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Clarity Perfect Water System</h3>
+                <p class="text-gray-600 mb-4">
+                  Enjoy filtered, alkaline, hydrogen-infused water at home. Improve hydration, taste, and overall wellness at an affordable price.
+                </p>
+                <a href="https://clarityperfect.com/8274/" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium" target="_blank">
+                  Get the Details 
+                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <div class="w-32 h-32 flex-shrink-0">
+                <img src="images/ClarityPerfectWaterSystem.png" alt="Clarity Perfect Water System" class="w-full h-full object-contain rounded-lg transform transition-transform hover:scale-110 duration-300">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -130,7 +210,52 @@
         </a>
       </div>
     </section>
+
+    <!-- Add before your transformation preview section -->
+    <section class="bg-gradient-to-r from-cyan-600 to-cyan-800 py-16 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-8 text-center">
+          <div class="fade-in">
+            <div class="text-4xl font-bold mb-2" id="daysCounter">0</div>
+            <div class="text-cyan-100">Days on Journey</div>
+          </div>
+          <div class="fade-in">
+            <div class="text-4xl font-bold mb-2" id="customersCounter">0</div>
+            <div class="text-cyan-100">Empowered Wellness Warriors</div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <!-- Add this before the footer -->
+  <section class="bg-gradient-to-br from-cyan-50 to-white py-16">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Join the Wellness Warriors Community</h2>
+      <p class="text-gray-600 mb-8">Get exclusive weekly insights, transformation tips, and early access to new recommendations. Join our community of health-conscious warriors!</p>
+      
+      <form class="max-w-md mx-auto" action="YOUR_FORM_ENDPOINT" method="POST">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter your email" 
+            required 
+            class="flex-1 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 outline-none"
+          >
+          <button 
+            type="submit" 
+            class="bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors duration-300 whitespace-nowrap"
+          >
+            Join the Journey
+          </button>
+        </div>
+        <p class="text-sm text-gray-500 mt-4">
+          Join our community of {{ counter }} warriors transforming their lives. Unsubscribe anytime.
+        </p>
+      </form>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-white border-t border-gray-200 py-8">
@@ -140,6 +265,92 @@
   </footer>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <button id="scrollToTop" class="fixed bottom-8 right-8 bg-cyan-600 text-white p-3 rounded-full shadow-lg opacity-0 transition-opacity duration-300 hover:bg-cyan-700">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <script>
+    const scrollToTop = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTop.style.opacity = '1';
+      } else {
+        scrollToTop.style.opacity = '0';
+      }
+    });
+
+    scrollToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+
+  <script>
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(element => {
+      observer.observe(element);
+    });
+  </script>
+
+  <script>
+    function animateCounter(element, target, duration = 2000) {
+      let start = 0;
+      const increment = target / (duration / 16);
+      
+      function updateCounter() {
+        start += increment;
+        if (start < target) {
+          element.textContent = Math.floor(start);
+          requestAnimationFrame(updateCounter);
+        } else {
+          element.textContent = target;
+        }
+      }
+      
+      updateCounter();
+    }
+
+    function getDaysSinceStart() {
+      const startDate = new Date('2022-02-09');
+      const today = new Date();
+      const diffTime = Math.abs(today - startDate);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      return diffDays;
+    }
+
+    // Create a single observer for all animations
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const daysCount = getDaysSinceStart();
+          animateCounter(document.getElementById('daysCounter'), daysCount);
+          animateCounter(document.getElementById('customersCounter'), 10);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    // Observe the counter section
+    const counterSection = document.querySelector('.grid-cols-2');
+    if (counterSection) {
+      counterObserver.observe(counterSection);
+    }
   </script>
 </body>
 </html>
