@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const physicalWellnessContent = document.getElementById('physical-wellness');
 
   if (gutHealthCard && physicalWellnessCard && gutHealthContent && physicalWellnessContent) {
+    console.log('Elements found:', { gutHealthCard, physicalWellnessCard, gutHealthContent, physicalWellnessContent });
+    
     // Add transition styles
     gutHealthContent.classList.add('content-section');
     physicalWellnessContent.classList.add('content-section');
@@ -74,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
     physicalWellnessContent.classList.remove('active');
 
     function showPath(pathCard, contentSection, otherSection) {
+      console.log('showPath called for:', contentSection.id);
+      
       // Reset all cards
       document.querySelectorAll('.path-card').forEach(card => {
         card.classList.remove('active');
@@ -92,21 +96,19 @@ document.addEventListener('DOMContentLoaded', function() {
       contentSection.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Add both click and touch events
-    function addClickTouchHandler(element, handler) {
-      element.addEventListener('click', handler);
-      element.addEventListener('touchstart', function(e) {
-        e.preventDefault(); // Prevent double-firing on mobile devices
-        handler();
+    // Handle both click and touch events
+    ['click', 'touchend'].forEach(eventType => {
+      gutHealthCard.addEventListener(eventType, function(e) {
+        e.preventDefault();
+        showPath(gutHealthCard, gutHealthContent, physicalWellnessContent);
       });
-    }
 
-    addClickTouchHandler(gutHealthCard, () => {
-      showPath(gutHealthCard, gutHealthContent, physicalWellnessContent);
+      physicalWellnessCard.addEventListener(eventType, function(e) {
+        e.preventDefault();
+        showPath(physicalWellnessCard, physicalWellnessContent, gutHealthContent);
+      });
     });
-
-    addClickTouchHandler(physicalWellnessCard, () => {
-      showPath(physicalWellnessCard, physicalWellnessContent, gutHealthContent);
-    });
+  } else {
+    console.log('Some elements not found');
   }
 }); 
