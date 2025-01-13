@@ -92,11 +92,20 @@ document.addEventListener('DOMContentLoaded', function() {
       contentSection.scrollIntoView({ behavior: 'smooth' });
     }
 
-    gutHealthCard.addEventListener('click', () => {
+    // Add both click and touch events
+    function addClickTouchHandler(element, handler) {
+      element.addEventListener('click', handler);
+      element.addEventListener('touchstart', function(e) {
+        e.preventDefault(); // Prevent double-firing on mobile devices
+        handler();
+      });
+    }
+
+    addClickTouchHandler(gutHealthCard, () => {
       showPath(gutHealthCard, gutHealthContent, physicalWellnessContent);
     });
 
-    physicalWellnessCard.addEventListener('click', () => {
+    addClickTouchHandler(physicalWellnessCard, () => {
       showPath(physicalWellnessCard, physicalWellnessContent, gutHealthContent);
     });
   }
