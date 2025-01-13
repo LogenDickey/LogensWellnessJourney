@@ -74,11 +74,16 @@
   <!-- Header -->
   <header class="bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-      <a href="index.html" class="text-2xl font-bold text-cyan-600">Logen's Wellness Journey</a>
+      <a href="index.html" class="flex items-center space-x-3">
+        <div class="text-2xl font-bold">
+          <span class="text-cyan-600">Wellness Warriors</span>
+        </div>
+        <span class="text-sm text-gray-600 border-l border-gray-300 pl-3">by Logen Dickey</span>
+      </a>
       <nav class="hidden md:flex space-x-8">
         <a href="index.html" class="text-gray-700 hover:text-cyan-600 font-bold">Home</a>
-        <a href="recommendations.html" class="text-gray-700 hover:text-cyan-600">Recommendations</a>
-        <a href="about.html" class="text-gray-700 hover:text-cyan-600">About Me</a>
+        <a href="start-your-journey.html" class="text-gray-700 hover:text-cyan-600">Start Your Journey</a>
+        <a href="about.html" class="text-gray-700 hover:text-cyan-600">About Us</a>
       </nav>
       <button id="openMenu" class="md:hidden relative w-10 h-10 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-lg overflow-hidden group">
         <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center space-y-1.5 transition-transform duration-300 group-hover:scale-110">
@@ -103,125 +108,125 @@
         </div>
         <nav class="space-y-6">
           <a href="index.html" class="block text-lg text-cyan-200 font-bold transition-colors duration-300">Home</a>
-          <a href="recommendations.html" class="block text-lg text-white hover:text-cyan-200 transition-colors duration-300">Recommendations</a>
-          <a href="about.html" class="block text-lg text-white hover:text-cyan-200 transition-colors duration-300">About Me</a>
+          <a href="start-your-journey.html" class="block text-lg text-white hover:text-cyan-200 transition-colors duration-300">Start Your Journey</a>
+          <a href="about.html" class="block text-lg text-white hover:text-cyan-200 transition-colors duration-300">About Us</a>
         </nav>
       </div>
     </div>
   </div>
 
   <!-- Hero Section -->
-  <main>
-    <section class="hero-background py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="bg-white bg-opacity-10 backdrop-blur-lg p-6 rounded-lg inline-block">
-          <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Empower Your Wellness Journey</h1>
-          <p class="text-lg md:text-xl text-cyan-100 mb-6">Hi, I'm Logen Dickey. I'm on a journey to transform my health, and I'm here to help you join me.</p>
-          <a href="recommendations.html" class="inline-block bg-white text-cyan-600 px-8 py-3 rounded-lg hover:bg-gray-50 font-medium shadow-lg">
-            Explore My Recommendations
+  <section class="relative bg-gradient-to-br from-cyan-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+          Your Wellness Journey <span class="text-cyan-600">Starts Here</span>
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
+          Whether you're seeking better energy, mental clarity, or physical wellbeing, there's a path forward. Join our community of wellness warriors taking control of their lives.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="recommendations.html" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg text-white bg-cyan-600 hover:bg-cyan-700 transition-colors duration-300">
+            Start Your Journey
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
+          <a href="about.html" class="inline-flex items-center justify-center px-8 py-4 border border-cyan-600 text-lg font-medium rounded-lg text-cyan-600 hover:bg-cyan-50 transition-colors duration-300">
+            Read My Story
           </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Introduction to Your Journey -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="grid md:grid-cols-2 gap-12">
-        <div>
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">My Health Transformation</h2>
+  <!-- Journey Stats Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Join Our Growing Community</h2>
+        <p class="text-xl text-gray-600">Every day, more people are discovering their path to wellness</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-gradient-to-br from-cyan-50 to-white p-8 rounded-xl shadow-md">
+          <div class="text-4xl font-bold text-cyan-600 mb-2" id="daysCounter">Calculating...</div>
+          <p class="text-gray-600">Days of Personal Growth</p>
+          <p class="text-sm text-gray-500 mt-2">From struggle to success: the journey that inspired Wellness Warriors</p>
+        </div>
+        <div class="bg-gradient-to-br from-cyan-50 to-white p-8 rounded-xl shadow-md">
+          <div class="text-4xl font-bold text-cyan-600 mb-2" id="customersCounter">0</div>
+          <p class="text-gray-600">Warriors in Our Community</p>
+          <p class="text-sm text-gray-500 mt-2">Join us in our mission for better health</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Two Paths Section -->
+  <section class="bg-gradient-to-br from-cyan-50 to-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Choose Your Path to Wellness</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+          Whether you're focusing on internal health or physical wellbeing, there's a path that's right for you.
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <!-- Gut Health Path -->
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Internal Wellness</h3>
           <p class="text-gray-600 mb-6">
-            I'm on a journey to transform my health after struggling with low energy, digestive issues, and overall wellness. By focusing on gut health and proper hydration, I'm discovering incredible improvements in my daily life.
+            Focus on gut health and nutrition to improve energy levels, mental clarity, and overall wellbeing.
           </p>
-          <a href="about.html" class="text-cyan-600 hover:text-cyan-700 font-medium">Read More About My Story &rarr;</a>
+          <a href="start-your-journey.html#gut-health" class="inline-flex items-center text-cyan-600 hover:text-cyan-700">
+            Learn More
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
         </div>
-        <div class="flex items-center justify-center">
-          <img src="images/healthjourneytransformation1.jpg" alt="Health Journey Transformation Before and After Photo" class="rounded-lg shadow-lg max-w-[300px] w-full">
+        <!-- Physical Wellbeing Path -->
+        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 00-1 1v1.586l-2.293-2.293a1 1 0 10-1.414 1.414L7.586 7H6a1 1 0 100 2h1.586l-2.293 2.293a1 1 0 101.414 1.414L9 10.414V12a1 1 0 102 0v-1.586l2.293 2.293a1 1 0 001.414-1.414L12.414 9H14a1 1 0 100-2h-1.586l2.293-2.293a1 1 0 00-1.414-1.414L11 5.586V4a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Physical Vitality</h3>
+          <p class="text-gray-600 mb-6">
+            Enhance your physical wellbeing through proper hydration and movement, no matter your fitness level.
+          </p>
+          <a href="start-your-journey.html#physical-wellness" class="inline-flex items-center text-cyan-600 hover:text-cyan-700">
+            Learn More
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+            </svg>
+          </a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Featured Products Teaser -->
-    <section class="bg-white py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">What I Recommend</h2>
-        <div class="grid gap-8 md:grid-cols-2">
-          <!-- Gut Health Triad -->
-          <div class="float-animation bg-gradient-to-br from-cyan-50 to-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div class="flex flex-col md:flex-row gap-6 items-center">
-              <div class="flex-1">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Gut Health Triad</h3>
-                <p class="text-gray-600 mb-4">
-                  Your gut health affects energy, mood, immunity, and more. The Gut Health Triad is a powerful combo that can help improve digestion, nutrient absorption, and overall vitality.
-                </p>
-                <a href="https://nucleogenex.com/details/173/DickeyL" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium" target="_blank">
-                  Learn More 
-                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-              <div class="w-32 h-32 flex-shrink-0">
-                <img src="images/GutHealthTriad.png" alt="Gut Health Triad" class="w-full h-full object-contain rounded-lg transform transition-transform hover:scale-110 duration-300">
-              </div>
-            </div>
-          </div>
-          
-          <!-- Clarity Perfect Water System -->
-          <div class="float-animation-delayed bg-gradient-to-br from-cyan-50 to-white p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
-            <div class="flex flex-col md:flex-row gap-6 items-center">
-              <div class="flex-1">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Clarity Perfect Water System</h3>
-                <p class="text-gray-600 mb-4">
-                  Enjoy filtered, alkaline, hydrogen-infused water at home. Improve hydration, taste, and overall wellness at an affordable price.
-                </p>
-                <a href="https://clarityperfect.com/8274/" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-medium" target="_blank">
-                  Get the Details 
-                  <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </div>
-              <div class="w-32 h-32 flex-shrink-0">
-                <img src="images/ClarityPerfectWaterSystem.png" alt="Clarity Perfect Water System" class="w-full h-full object-contain rounded-lg transform transition-transform hover:scale-110 duration-300">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Transformation Preview -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="text-center">
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">See My Transformation</h2>
-        <p class="text-gray-600 mb-6">
-          Check out my progress photos and discover how focusing on gut health and high-quality hydration changed my life.
-        </p>
-        <p class="text-gray-600 mb-6">
-          Wondering why there are so many days on my journey? Learn why I haven't always been consistent. 
-        </p>
-        <a href="about.html" class="inline-block bg-cyan-600 text-white px-8 py-3 rounded-lg hover:bg-cyan-700 font-medium shadow-lg">
-          Read More About Me
-        </a>
-      </div>
-    </section>
-
-    <!-- Counter Section -->
-    <section class="bg-gradient-to-r from-cyan-600 to-cyan-800 py-16 text-white">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 gap-8 text-center counter-section">
-          <div>
-            <div class="text-4xl font-bold mb-2" id="daysCounter">Calculating...</div>
-            <div class="text-cyan-100">Days on Journey</div>
-          </div>
-          <div>
-            <div class="text-4xl font-bold mb-2" id="customersCounter">Loading...</div>
-            <div class="text-cyan-100">Empowered Health Warriors</div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- Call to Action Section -->
+  <section class="bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-2xl p-8 md:p-12 text-white text-center">
+    <h2 class="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
+    <p class="text-cyan-100 mb-8 max-w-2xl mx-auto">
+      Join our community and discover how proper gut health and hydration can transform your life. Choose your path and take the first step today.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="start-your-journey.html" class="inline-flex items-center justify-center px-6 py-3 bg-white text-cyan-600 font-semibold rounded-lg hover:bg-cyan-50 transition-colors duration-300">
+        Choose Your Path
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+        </svg>
+      </a>
+    </div>
+  </section>
 
   <!-- Newsletter Section -->
   <section class="bg-gradient-to-br from-cyan-50 to-white py-16">
