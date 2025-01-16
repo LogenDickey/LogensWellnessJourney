@@ -12,6 +12,53 @@
     body {
       font-family: 'Inter', sans-serif;
     }
+
+    /* Enhanced Slide Animations */
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .slide-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    /* Enhanced Fade Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: opacity, transform;
+    }
+
+    /* Active States */
+    .slide-in-left.visible,
+    .slide-in-right.visible,
+    .slide-in-up.visible,
+    .fade-in.visible {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    /* Stagger Delays */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+    .delay-600 { transition-delay: 600ms; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -63,8 +110,8 @@
   <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
     <!-- Hero Section -->
     <div class="text-center mb-16">
-      <h1 class="text-5xl font-bold text-gray-900 mb-6">The Wellness Warriors Story</h1>
-      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+      <h1 class="slide-in-up text-5xl font-bold text-gray-900 mb-6">The Wellness Warriors Story</h1>
+      <p class="slide-in-up delay-200 text-xl text-gray-600 max-w-3xl mx-auto">
         From a personal transformation to building a community dedicated to helping others discover the power of gut health and proper hydration.
       </p>
     </div>
@@ -73,21 +120,21 @@
     <div class="space-y-24 mb-24">
       <!-- Early Struggles Section -->
       <section class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
+        <div class="space-y-6 slide-in-left">
           <h2 class="text-3xl font-bold text-gray-900">The Beginning</h2>
-          <p class="text-gray-600">
+          <p class="text-gray-600 fade-in">
             My name is Logen Dickey, and when COVID hit, I gained over 60 pounds, lost significant muscle mass, and struggled with fluctuating energy levels and mental motivation. I experienced the frustrating cycle of high and low energy that persisted for days, weeks, and months. This pattern affected me both physically and mentally.
 
             I never quite knew if I could maintain consistency with anything or take back control of my life. I would be super productive for a few weeks, then fall back into old habits for months. It was a challenging cycle that seemed impossible to break. Despite trying countless supplements and diets, nothing provided the lasting change I was seeking.
           </p>
-          <div class="border-l-4 border-cyan-600 pl-6 italic text-gray-700">
+          <div class="border-l-4 border-cyan-600 pl-6 italic text-gray-700 fade-in delay-200">
             "From my first keto diet back in early 2022 to intermittent fasting, consistent exercise, 
             and hard diet changes, I just couldn't keep my physical or mental motivation up."
           </div>
         </div>
-        <div class="relative">
+        <div class="relative slide-in-right">
           <img src="images/BeforeLifeChange (1).jpg" alt="Early Journey" class="rounded-lg shadow-xl">
-          <div class="absolute -bottom-4 -left-4 bg-cyan-600 text-white px-6 py-2 rounded-lg">
+          <div class="absolute -bottom-4 -left-4 bg-cyan-600 text-white px-6 py-2 rounded-lg fade-in delay-400">
             Before
           </div>
         </div>
@@ -95,27 +142,27 @@
 
       <!-- Discovery Section -->
       <section class="grid md:grid-cols-2 gap-12 items-center md:grid-flow-dense">
-        <div class="space-y-6 md:col-start-2">
+        <div class="space-y-6 md:col-start-2 slide-in-right">
           <h2 class="text-3xl font-bold text-gray-900">The Discovery</h2>
-          <p class="text-gray-600">
+          <p class="text-gray-600 fade-in">
             Everything changed when I discovered the crucial connection between my energy levels, mental clarity, and gut health combined with proper hydration. Through careful experimentation and research, I finally found a sustainable approach to wellness. For the first time in my life, I maintained consistency in everything from diet to exercise and supplementation.
 
             My energy levels weren't just improving for a day or a week—they were consistently high every single day. I realized that my poor gut health had been affecting my mental state significantly. Once I understood this connection, I knew I had found the key to lasting change.
           </p>
           <ul class="space-y-3 text-gray-600">
-            <li class="flex items-center">
+            <li class="flex items-center fade-in" style="animation-delay: 200ms;">
               <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
               </svg>
               Improved mental clarity and focus
             </li>
-            <li class="flex items-center">
+            <li class="flex items-center fade-in" style="animation-delay: 400ms;">
               <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
               </svg>
               Consistent energy throughout the day
             </li>
-            <li class="flex items-center">
+            <li class="flex items-center fade-in" style="animation-delay: 600ms;">
               <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
               </svg>
@@ -123,9 +170,9 @@
             </li>
           </ul>
         </div>
-        <div class="relative md:col-start-1">
+        <div class="relative md:col-start-1 slide-in-left">
           <img src="images/TurningPoint.jpg" alt="The Discovery" class="rounded-lg shadow-xl">
-          <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-6 py-2 rounded-lg">
+          <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-6 py-2 rounded-lg fade-in delay-400">
             The Turning Point
           </div>
         </div>
@@ -133,21 +180,21 @@
 
       <!-- Family Support Section -->
       <section class="grid md:grid-cols-2 gap-12 items-center mb-24">
-        <div class="relative">
+        <div class="relative slide-in-left">
           <img src="images/FamilySupport.jpg" alt="Family Support" class="rounded-lg shadow-xl">
-          <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-6 py-2 rounded-lg">
+          <div class="absolute -bottom-4 -right-4 bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-6 py-2 rounded-lg fade-in delay-400">
             Family Support
           </div>
         </div>
-        <div class="space-y-6">
+        <div class="space-y-6 slide-in-right">
           <h2 class="text-3xl font-bold text-gray-900">The Power of Support</h2>
-          <p class="text-gray-600">
+          <p class="text-gray-600 fade-in">
             One of the most significant turning points in my journey was when my father joined me on this path. Having family support not only strengthened my resolve but also validated that these changes could benefit anyone, regardless of age or background. Together, we've discovered that proper gut health and hydration can transform lives, and we're committed to sharing this knowledge with others.
           </p>
-          <div class="border-l-4 border-cyan-600 pl-6 italic text-gray-700">
+          <div class="border-l-4 border-cyan-600 pl-6 italic text-gray-700 fade-in delay-200">
             "Seeing my father experience the same transformative benefits I had discovered made me realize this wasn't just about personal wellness anymore—it was about creating a community where everyone could thrive together."
           </div>
-          <p class="text-gray-600">
+          <p class="text-gray-600 fade-in delay-400">
             Today, we share the same mission: helping others discover their path to wellness through proper gut health and hydration. 
             His journey alongside mine has become a testament to the power of community and support in achieving lasting wellness.
           </p>
@@ -156,44 +203,44 @@
 
       <!-- Present Day Section -->
       <section class="grid md:grid-cols-2 gap-12 items-center">
-        <div class="space-y-6">
+        <div class="space-y-6 slide-in-left">
           <h2 class="text-3xl font-bold text-gray-900">Today</h2>
-          <p class="text-gray-600">
+          <p class="text-gray-600 fade-in">
             Now, I'm experiencing levels of energy and mental clarity that I haven't felt since my youth. Through proper gut health and hydration, I've unlocked a new chapter in my wellness journey. My mental state and clarity have been consistently amazing, and the best part is that I'm only just getting started! This transformation is something I want to share with others who are facing similar struggles.
           </p>
-          <div class="bg-gradient-to-r from-cyan-50 to-white p-6 rounded-lg border border-cyan-100">
+          <div class="bg-gradient-to-r from-cyan-50 to-white p-6 rounded-lg border border-cyan-100 fade-in delay-200">
             <h3 class="text-xl font-semibold text-gray-900 mb-3">My Daily Routine</h3>
             <ul class="space-y-2 text-gray-600">
-              <li class="flex items-start">
+              <li class="flex items-start fade-in" style="animation-delay: 200ms;">
                 <span class="text-cyan-600 mr-2">→</span>
                 Gut Health Triad supplementation first thing in the morning
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start fade-in" style="animation-delay: 400ms;">
                 <span class="text-cyan-600 mr-2">→</span>
                 Cold therapy in the morning
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start fade-in" style="animation-delay: 600ms;">
                 <span class="text-cyan-600 mr-2">→</span>
                 Proper hydration with Clarity Perfect Water all day
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start fade-in" style="animation-delay: 800ms;">
                 <span class="text-cyan-600 mr-2">→</span>
                 Balanced nutrition meals, not eating too late
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start fade-in" style="animation-delay: 1000ms;">
                 <span class="text-cyan-600 mr-2">→</span>
                 Excercise in the morning or eveneing (at least 3 times a week)
               </li>
-              <li class="flex items-start">
+              <li class="flex items-start fade-in" style="animation-delay: 1200ms;">
                 <span class="text-cyan-600 mr-2">→</span>
                 Get good quality sleep!
               </li>
             </ul>
           </div>
         </div>
-        <div class="relative">
+        <div class="relative slide-in-right">
           <img src="images/healthjourneytransformation1.jpg" alt="Present Day" class="rounded-lg shadow-xl">
-          <div class="absolute -bottom-4 -left-4 bg-cyan-600 text-white px-6 py-2 rounded-lg">
+          <div class="absolute -bottom-4 -left-4 bg-cyan-600 text-white px-6 py-2 rounded-lg fade-in delay-400">
             Then : Now
           </div>
         </div>
@@ -201,7 +248,7 @@
 
       <!-- Journey Length Explanation -->
       <section class="mb-16 text-center">
-        <div class="max-w-3xl mx-auto bg-gradient-to-r from-cyan-50 to-white p-8 rounded-2xl shadow-md">
+        <div class="max-w-3xl mx-auto bg-gradient-to-r from-cyan-50 to-white p-8 rounded-2xl shadow-md slide-in-up">
           <h2 class="text-3xl font-bold text-gray-900 mb-6">Why <div class="text-cyan-600 inline" id="daysCounter">Calculating...</div> Days?</h2>
           <p class="text-gray-600 text-lg leading-relaxed">
             This number represents more than just days—it's the entire length of my wellness journey. 
@@ -219,18 +266,18 @@
 
       <!-- Future Goals Introduction -->
       <section class="mb-12 text-center">
-        <h2 class="text-4xl font-bold text-gray-900 mb-6">Looking Forward</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12">
+        <h2 class="slide-in-up text-4xl font-bold text-gray-900 mb-6">Looking Forward</h2>
+        <p class="slide-in-up delay-200 text-xl text-gray-600 max-w-3xl mx-auto mb-12">
           Together with my father and our growing community of Wellness Warriors, we're committed to helping others avoid the years of 
           trial and error we went through. Here's how we plan to make a difference:
         </p>
       </section>
 
-      <!-- Achievement Cards Section (your existing section with the 3 cards) -->
+      <!-- Achievement Cards Section -->
       <section class="mb-24 bg-gradient-to-br from-white to-cyan-50 rounded-2xl p-8 md:p-12 shadow-lg">
         <div class="grid md:grid-cols-3 gap-8">
           <!-- Key Achievement 1 -->
-          <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="slide-in-up text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
             <div class="w-16 h-16 mx-auto mb-4 bg-cyan-100 rounded-full flex items-center justify-center">
               <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"/>
@@ -243,7 +290,7 @@
           </div>
 
           <!-- Key Achievement 2 -->
-          <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="slide-in-up delay-200 text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
             <div class="w-16 h-16 mx-auto mb-4 bg-cyan-100 rounded-full flex items-center justify-center">
               <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"/>
@@ -257,7 +304,7 @@
           </div>
 
           <!-- Key Achievement 3 -->
-          <div class="text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="slide-in-up delay-400 text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
             <div class="w-16 h-16 mx-auto mb-4 bg-cyan-100 rounded-full flex items-center justify-center">
               <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"/>
@@ -274,11 +321,11 @@
 
     <!-- Call to Action -->
     <section class="bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-2xl p-8 md:p-12 text-white text-center">
-      <h2 class="text-3xl font-bold mb-4">Join Us on This Journey</h2>
-      <p class="text-cyan-100 mb-8 max-w-2xl mx-auto">
+      <h2 class="slide-in-up text-3xl font-bold mb-4">Join Us on This Journey</h2>
+      <p class="slide-in-up delay-200 text-cyan-100 mb-8 max-w-2xl mx-auto">
         Whether you're focusing on gut health or physical vitality, there's a path that's right for you. Let's transform lives together.
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <div class="slide-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center">
         <a href="start-your-journey.html" class="inline-flex items-center justify-center px-6 py-3 bg-white text-cyan-600 font-semibold rounded-lg hover:bg-cyan-50 transition-colors duration-300">
           Start Your Journey
           <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

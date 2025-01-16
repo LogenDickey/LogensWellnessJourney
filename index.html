@@ -47,6 +47,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: opacity, transform;
     }
 
     .fade-in.visible {
@@ -56,10 +57,12 @@
 
     .float-animation {
       animation: floating 3s ease-in-out infinite;
+      will-change: transform;
     }
     
     .float-animation-delayed {
       animation: floating 3s ease-in-out 1.5s infinite;
+      will-change: transform;
     }
     
     @keyframes floating {
@@ -67,6 +70,45 @@
       50% { transform: translateY(-10px); }
       100% { transform: translateY(0px); }
     }
+
+    /* Slide animations */
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    .slide-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
+    }
+
+    /* Active states */
+    .slide-in-left.visible,
+    .slide-in-right.visible,
+    .slide-in-up.visible,
+    .fade-in.visible {
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    /* Stagger delays */
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+    .delay-600 { transition-delay: 600ms; }
   </style>
   <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
@@ -119,13 +161,13 @@
   <section class="relative bg-gradient-to-br from-cyan-50 to-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
       <div class="text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
+        <h1 class="slide-in-up text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
           Your Wellness Journey <span class="text-cyan-600">Starts Here</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
+        <p class="slide-in-up delay-200 text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8">
           Whether you're seeking better energy, mental clarity, or physical wellbeing, there's a path forward. Join our community of wellness warriors taking control of their lives.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="slide-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center">
           <a href="recommendations.html" class="inline-flex items-center justify-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg text-white bg-cyan-600 hover:bg-cyan-700 transition-colors duration-300">
             Start Your Journey
             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,16 +186,16 @@
   <section class="bg-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Join Our Growing Community</h2>
-        <p class="text-xl text-gray-600">Every day, more people are discovering their path to wellness</p>
+        <h2 class="slide-in-up text-3xl font-bold text-gray-900 mb-4">Join Our Growing Community</h2>
+        <p class="slide-in-up delay-200 text-xl text-gray-600">Every day, more people are discovering their path to wellness</p>
       </div>
       <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="bg-gradient-to-br from-cyan-50 to-white p-8 rounded-xl shadow-md">
+        <div class="slide-in-left bg-gradient-to-br from-cyan-50 to-white p-8 rounded-xl shadow-md">
           <div class="text-4xl font-bold text-cyan-600 mb-2" id="daysCounter">Calculating...</div>
           <p class="text-gray-600">Days of Personal Growth</p>
           <p class="text-sm text-gray-500 mt-2">From struggle to success: the journey that inspired Wellness Warriors</p>
         </div>
-        <div class="bg-gradient-to-br from-cyan-50 to-white p-8 rounded-xl shadow-md">
+        <div class="slide-in-right bg-gradient-to-br from-cyan-50 to-white p-8 rounded-xl shadow-md">
           <div class="text-4xl font-bold text-cyan-600 mb-2" id="customersCounter">0</div>
           <p class="text-gray-600">Warriors in Our Community</p>
           <p class="text-sm text-gray-500 mt-2">Join us in our mission for better health</p>
@@ -162,48 +204,125 @@
     </div>
   </section>
 
-  <!-- Two Paths Section -->
+  <!-- Products Section -->
   <section class="bg-gradient-to-br from-cyan-50 to-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">Choose Your Path to Wellness</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Whether you're focusing on internal health or physical wellbeing, there's a path that's right for you.
+        <h2 class="slide-in-up text-3xl font-bold text-gray-900 mb-4">Transform Your Health</h2>
+        <p class="slide-in-up delay-200 text-xl text-gray-600 max-w-3xl mx-auto">
+          Discover our proven solutions for optimal wellness, backed by real results and transformative experiences.
         </p>
       </div>
       <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <!-- Gut Health Path -->
-        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-          <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M7 2a1 1 0 00-.707 1.707L7 4.414v3.758a1 1 0 01-.293.707l-4 4C.817 14.769 2.156 18 4.828 18h10.343c2.673 0 4.012-3.231 2.122-5.121l-4-4A1 1 0 0113 8.172V4.414l.707-.707A1 1 0 0013 2H7zm2 6.172V4h2v4.172a3 3 0 00.879 2.12l1.027 1.028a4 4 0 00-2.171.102l-.47.156a4 4 0 01-2.53 0l-.563-.187a1.993 1.993 0 00-.114-.035l1.063-1.063A3 3 0 009 8.172z" clip-rule="evenodd"/>
-            </svg>
+        <!-- Gut Health Product -->
+        <div class="slide-in-left bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="relative mb-8">
+            <!-- Product Image -->
+            <div class="relative z-10 float-animation">
+              <img src="images/GutHealthTriad.png" alt="Gut Health Triad" class="w-48 h-48 mx-auto object-contain">
+            </div>
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-cyan-100 rounded-full opacity-50 blur-xl float-animation-delayed"></div>
+            <div class="absolute top-4 left-1/4 w-16 h-16 bg-cyan-200 rounded-full opacity-30 blur-lg float-animation"></div>
+            <div class="absolute top-8 right-1/4 w-12 h-12 bg-cyan-300 rounded-full opacity-20 blur-md float-animation-delayed"></div>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Internal Wellness</h3>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Gut Health Triad</h3>
           <p class="text-gray-600 mb-6">
-            Focus on gut health and nutrition to improve energy levels, mental clarity, and overall wellbeing.
+            Complete digestive support featuring our signature blend of probiotics, digestive enzymes, and CoreBiome® tributyrin.
           </p>
-          <a href="start-your-journey.html#gut-health" class="inline-flex items-center text-cyan-600 hover:text-cyan-700">
+          <ul class="space-y-4 mb-6">
+            <li class="flex items-start fade-in">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Breakthrough CoreBiome® tributyrin for optimal gut health</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 200ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Clinically proven digestive enzyme blend</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 400ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Supports healthy weight management</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 600ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Enhances nutrient absorption by up to 80%</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 800ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Boosts energy levels and mental clarity</span>
+            </li>
+          </ul>
+          <a href="https://agentnaturals.com/8274" class="group inline-flex items-center justify-center w-full px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-all duration-300 transform hover:scale-[1.02]">
             Learn More
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>
           </a>
         </div>
-        <!-- Physical Wellbeing Path -->
-        <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-          <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 3a1 1 0 00-1 1v1.586l-2.293-2.293a1 1 0 10-1.414 1.414L7.586 7H6a1 1 0 100 2h1.586l-2.293 2.293a1 1 0 101.414 1.414L9 10.414V12a1 1 0 102 0v-1.586l2.293 2.293a1 1 0 001.414-1.414L12.414 9H14a1 1 0 100-2h-1.586l2.293-2.293a1 1 0 00-1.414-1.414L11 5.586V4a1 1 0 00-1-1z" clip-rule="evenodd"/>
-            </svg>
+
+        <!-- Clarity Perfect Water Product -->
+        <div class="slide-in-right bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div class="relative mb-8">
+            <!-- Product Image -->
+            <div class="relative z-10 float-animation">
+              <img src="images/ClarityPerfectWaterSystem.png" alt="Clarity Perfect Water" class="w-48 h-48 mx-auto object-contain">
+            </div>
+            <!-- Decorative Background Elements -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-cyan-100 rounded-full opacity-50 blur-xl float-animation-delayed"></div>
+            <div class="absolute top-4 right-1/4 w-16 h-16 bg-cyan-200 rounded-full opacity-30 blur-lg float-animation"></div>
+            <div class="absolute top-8 left-1/4 w-12 h-12 bg-cyan-300 rounded-full opacity-20 blur-md float-animation-delayed"></div>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Physical Vitality</h3>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">Clarity Perfect Water</h3>
           <p class="text-gray-600 mb-6">
-            Enhance your physical wellbeing through proper hydration and movement, no matter your fitness level.
+            Transform your hydration with mineral-rich, hydrogen-infused water that supports optimal health and vitality.
           </p>
-          <a href="start-your-journey.html#physical-wellness" class="inline-flex items-center text-cyan-600 hover:text-cyan-700">
+          <ul class="space-y-4 mb-6">
+            <li class="flex items-start fade-in">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">3-stage filtration removing 100% of bacteria, viruses, and heavy metals</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 200ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Hydrogen-rich water for powerful antioxidant benefits, slowing aging</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 400ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Perfect 9.0 pH balance with 6 essential minerals</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 600ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Saves hundreds vs. bottled water annually</span>
+            </li>
+            <li class="flex items-start fade-in" style="animation-delay: 800ms;">
+              <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="text-gray-700">Eco-friendly biodegradable filter cartridges, no plastic water bottle waste</span>
+            </li>
+          </ul>
+          <a href="https://clarityperfect.com/8274/" class="group inline-flex items-center justify-center w-full px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-all duration-300 transform hover:scale-[1.02]">
             Learn More
-            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
             </svg>
           </a>
@@ -214,11 +333,11 @@
 
   <!-- Call to Action Section -->
   <section class="bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-2xl p-8 md:p-12 text-white text-center">
-    <h2 class="text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
-    <p class="text-cyan-100 mb-8 max-w-2xl mx-auto">
+    <h2 class="slide-in-up text-3xl font-bold mb-4">Ready to Start Your Journey?</h2>
+    <p class="slide-in-up delay-200 text-cyan-100 mb-8 max-w-2xl mx-auto">
       Join our community and discover how proper gut health and hydration can transform your life. Choose your path and take the first step today.
     </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <div class="slide-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center">
       <a href="start-your-journey.html" class="inline-flex items-center justify-center px-6 py-3 bg-white text-cyan-600 font-semibold rounded-lg hover:bg-cyan-50 transition-colors duration-300">
         Choose Your Path
         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -231,67 +350,69 @@
   <!-- Newsletter Section -->
   <section class="bg-gradient-to-br from-cyan-50 to-white py-16">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Join the Wellness Warriors Community</h2>
-      <p class="text-gray-600 mb-8">Get exclusive weekly insights, transformation tips, and early access to new recommendations. 
-        Join our community of health-conscious warriors!</p>
-      
-      <!-- Success/Error Messages -->
-      <div id="error-message" class="hidden mb-4 p-4 text-red-700 bg-red-100 border-l-4 border-red-500 rounded-lg shadow-md transition-all duration-300">
-        <div class="flex items-center">
-          <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-          </svg>
-          <span>Please enter a valid email address.</span>
+      <h2 class="slide-in-up text-3xl font-bold text-gray-900 mb-4">Join the Wellness Warriors Community</h2>
+      <p class="slide-in-up delay-200 text-gray-600 mb-8">
+        Get exclusive weekly insights, transformation tips, and early access to new recommendations.
+      </p>
+      <div class="slide-in-up delay-400">
+        <!-- Success/Error Messages -->
+        <div id="error-message" class="hidden mb-4 p-4 text-red-700 bg-red-100 border-l-4 border-red-500 rounded-lg shadow-md transition-all duration-300">
+          <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+            </svg>
+            <span>Please enter a valid email address.</span>
+          </div>
         </div>
-      </div>
-      <div id="success-message" class="hidden mb-4 p-4 text-green-700 bg-green-100 border-l-4 border-green-500 rounded-lg shadow-md transition-all duration-300">
-        <div class="flex items-center">
-          <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-          </svg>
-          <span>Success! Welcome to the Wellness Warriors community!</span>
+        <div id="success-message" class="hidden mb-4 p-4 text-green-700 bg-green-100 border-l-4 border-green-500 rounded-lg shadow-md transition-all duration-300">
+          <div class="flex items-center">
+            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>Success! Welcome to the Wellness Warriors community!</span>
+          </div>
         </div>
-      </div>
-      
-      <!-- Form with Brevo Integration -->
-      <div class="sib-form">
-        <div id="sib-form-container" class="sib-form-container">
-          <form 
-            id="sib-form"
-            method="POST" 
-            action="https://df1ca7a9.sibforms.com/serve/MUIFAJ-DrfXUnWmik2TILjQS2PKjKcfdm8TXXMpxLPaCAautstwqhz6THt03-vdrOXeNuOKR-AK7zTrhjSWbJ0KwfKr1sAnxChn167ZG6GfiPrXsI-x07DQ8ew7egn96h7G7sC20rOtewj6ltjJhdtLPW7az9-2DqTvh59CfgNnhqzR8WidDq5mDtpUp_6oFGAaqTqK-W2fHh_S0"
-            data-type="subscription" 
-            class="max-w-md mx-auto"
-          >
-            <div class="flex flex-col sm:flex-row gap-4">
-              <div class="entry__field flex-1">
-                <input 
-                  type="email" 
-                  id="EMAIL"
-                  name="EMAIL" 
-                  autocomplete="off"
-                  placeholder="Enter your email" 
-                  data-required="true"
-                  required
-                  class="input w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 outline-none"
+        
+        <!-- Form with Brevo Integration -->
+        <div class="sib-form">
+          <div id="sib-form-container" class="sib-form-container">
+            <form 
+              id="sib-form"
+              method="POST" 
+              action="https://df1ca7a9.sibforms.com/serve/MUIFAJ-DrfXUnWmik2TILjQS2PKjKcfdm8TXXMpxLPaCAautstwqhz6THt03-vdrOXeNuOKR-AK7zTrhjSWbJ0KwfKr1sAnxChn167ZG6GfiPrXsI-x07DQ8ew7egn96h7G7sC20rOtewj6ltjJhdtLPW7az9-2DqTvh59CfgNnhqzR8WidDq5mDtpUp_6oFGAaqTqK-W2fHh_S0"
+              data-type="subscription" 
+              class="max-w-md mx-auto"
+            >
+              <div class="flex flex-col sm:flex-row gap-4">
+                <div class="entry__field flex-1">
+                  <input 
+                    type="email" 
+                    id="EMAIL"
+                    name="EMAIL" 
+                    autocomplete="off"
+                    placeholder="Enter your email" 
+                    data-required="true"
+                    required
+                    class="input w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 outline-none"
+                  >
+                </div>
+                <button 
+                  class="sib-form-block__button sib-form-block__button-with-loader bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                  form="sib-form"
+                  type="submit"
+                  id="submit-button"
                 >
+                  <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                    <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                  </svg>
+                  Join the Journey
+                </button>
               </div>
-              <button 
-                class="sib-form-block__button sib-form-block__button-with-loader bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
-                form="sib-form"
-                type="submit"
-                id="submit-button"
-              >
-                <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
-                  <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
-                </svg>
-                Join the Journey
-              </button>
-            </div>
-            <!-- Required hidden fields -->
-            <input type="text" name="email_address_check" value="" class="hidden">
-            <input type="hidden" name="locale" value="en">
-          </form>
+              <!-- Required hidden fields -->
+              <input type="text" name="email_address_check" value="" class="hidden">
+              <input type="hidden" name="locale" value="en">
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -321,6 +442,42 @@
       }
     };
     var AUTOHIDE = Boolean(0);
+
+    window.addEventListener('load', function() {
+      const form = document.getElementById('sib-form');
+      const successMessage = document.getElementById('success-message');
+      const errorMessage = document.getElementById('error-message');
+      const submitButton = document.getElementById('submit-button');
+
+      if (form) {
+        form.addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent form from submitting normally
+          
+          const email = form.querySelector('input[type="email"]').value;
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          
+          // Hide both messages initially
+          successMessage.classList.add('hidden');
+          errorMessage.classList.add('hidden');
+
+          if (!emailRegex.test(email)) {
+            // Show error for invalid email
+            errorMessage.classList.remove('hidden');
+            return;
+          }
+
+          // Show success message for valid email
+          successMessage.classList.remove('hidden');
+          form.reset();
+
+          // Disable submit button temporarily to prevent double submission
+          submitButton.disabled = true;
+          setTimeout(() => {
+            submitButton.disabled = false;
+          }, 2000);
+        });
+      }
+    });
   </script>
   <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
