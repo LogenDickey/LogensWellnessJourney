@@ -2,32 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Choose your wellness path and start your journey with Wellness Warriors." />
+  <meta name="description" content="Discover your personalized wellness path with our quick assessment." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Start Your Journey | Wellness Warriors</title>
+  <title>Start Your Journey | Wellness Assessment</title>
   <link rel="icon" href="favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .path-card.active {
-      transform: scale(1.02);
-      border-color: rgb(8 145 178);
+    body {
+      font-family: 'Inter', sans-serif;
     }
-    .content-section {
+
+    .option-card {
+      transition: all 0.3s ease;
+    }
+
+    .option-card.selected {
+      border-color: #0891b2;
+      background-color: #ecfeff;
+    }
+
+    /* Animation classes */
+    .fade-in {
       opacity: 0;
-      height: 0;
-      overflow: hidden;
-      transition: opacity 0.5s ease, height 0.5s ease;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
-    .content-section.active {
+
+    .fade-in.visible {
       opacity: 1;
-      height: auto;
-      padding: 2rem 0;
+      transform: translateY(0);
+    }
+
+    .slide-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.5s ease-out;
+    }
+
+    .slide-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50">
   <header class="bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center space-x-3">
@@ -54,12 +73,14 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="fixed inset-0 bg-gray-800 bg-opacity-50 backdrop-blur-sm z-50 hidden transition-opacity duration-300 opacity-0">
     <div class="bg-gradient-to-br from-cyan-600 to-cyan-800 w-64 h-full ml-auto transform transition-transform duration-300 translate-x-full">
-      <div class="p-6">
-        <button id="closeMenu" class="mb-8 text-white hover:text-cyan-200 transition-colors duration-300">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        </button>
+      <div class="p-6 flex flex-col">
+        <div class="flex justify-end mb-8">
+          <button id="closeMenu" class="text-white hover:text-cyan-200 transition-colors duration-300">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
         <nav class="space-y-6">
           <a href="index.html" class="block text-lg text-white hover:text-cyan-200 transition-colors duration-300">Home</a>
           <a href="start-your-journey.html" class="block text-lg text-cyan-200 font-bold transition-colors duration-300">Start Your Journey</a>
@@ -69,265 +90,176 @@
     </div>
   </div>
 
-  <!-- Hero Section -->
-  <section class="relative bg-gradient-to-br from-cyan-50 to-white py-16 md:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Choose Your Path to Wellness</h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-          Whether you're focusing on internal wellness or physical vitality, your journey starts here. 
-          Select the path that resonates with you to get started.
-        </p>
-      </div>
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Questionnaire Section -->
+    <div id="questionnaire" class="fade-in visible">
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
+        Let's Discover Your Wellness Path
+      </h1>
+      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Select all the areas where you'd like to see improvement. This will help us provide personalized recommendations for your journey.
+      </p>
 
-      <!-- Path Selection Cards -->
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
-        <!-- Gut Health Path -->
-        <div id="gut-health-card" class="path-card cursor-pointer bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-8 border-2 border-transparent">
-          <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/>
-            </svg>
+      <!-- Options Grid -->
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <!-- Energy Levels -->
+        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="energy">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Energy Levels</h3>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Internal Wellness</h3>
-          <p class="text-gray-600">Focus on gut health and nutrition to improve:</p>
-          <ul class="mt-4 space-y-2 text-gray-600">
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Energy Levels
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Mental Clarity
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Overall Wellbeing
-            </li>
-          </ul>
+          <p class="text-gray-600">Feeling tired or experiencing energy crashes throughout the day</p>
         </div>
 
-        <!-- Physical Vitality Path -->
-        <div id="physical-wellness-card" class="path-card cursor-pointer bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-8 border-2 border-transparent">
-          <div class="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mb-6">
-            <svg class="w-8 h-8 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 3a1 1 0 00-1 1v1.586l-2.293-2.293a1 1 0 10-1.414 1.414L7.586 7H6a1 1 0 100 2h1.586l-2.293 2.293a1 1 0 101.414 1.414L9 10.414V12a1 1 0 102 0v-1.586l2.293 2.293a1 1 0 001.414-1.414L12.414 9H14a1 1 0 100-2h-1.586l2.293-2.293a1 1 0 00-1.414-1.414L11 5.586V4a1 1 0 00-1-1z" clip-rule="evenodd"/>
-            </svg>
+        <!-- Gut Health -->
+        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="gut">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Gut Health</h3>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">Physical Vitality</h3>
-          <p class="text-gray-600">Enhance your physical wellbeing through:</p>
-          <ul class="mt-4 space-y-2 text-gray-600">
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          <p class="text-gray-600">Digestive issues, bloating, or irregular gut function</p>
+        </div>
+
+        <!-- Weight Management -->
+        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="weight">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
               </svg>
-              Proper Hydration
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Weight Management</h3>
+          </div>
+          <p class="text-gray-600">Struggling with weight goals or maintaining healthy weight</p>
+        </div>
+
+        <!-- Hydration -->
+        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="hydration">
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
               </svg>
-              Movement & Activity
-            </li>
-            <li class="flex items-center">
-              <svg class="w-5 h-5 text-cyan-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              Physical Performance
-            </li>
-          </ul>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-900">Hydration</h3>
+          </div>
+          <p class="text-gray-600">Not drinking enough water or feeling dehydrated</p>
         </div>
       </div>
 
-      <!-- Content Sections -->
-      <div id="gut-health" class="content-section max-w-7xl mx-auto">
-        <!-- Gut Health Content -->
-        <div class="bg-gradient-to-br from-cyan-50 to-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">Transform Your Health From Within</h2>
-          
-          <!-- Benefits Section -->
-          <div class="mb-12">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">The Power of the Gut Health Triad</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Complete Digestive Support</h4>
-                  <p class="text-gray-600">A synergistic formula combining vitamins A, D3, and K2 with CoreBiome® tributyrin for optimal gut health.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Enhanced Energy & Clarity</h4>
-                  <p class="text-gray-600">Experience improved energy levels and mental clarity through better nutrient absorption.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Immune System Support</h4>
-                  <p class="text-gray-600">Powerful antioxidants work together to strengthen your immune system and fight aging.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Overall Wellness</h4>
-                  <p class="text-gray-600">A foundation for better health through improved digestion and nutrient utilization.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product Section -->
-          <div class="bg-white rounded-xl shadow-md p-8">
-            <div class="max-w-2xl mx-auto">
-              <div class="bg-gradient-to-br from-cyan-50 to-white rounded-lg p-6">
-                <img src="images/GutHealthTriad.png" alt="Gut Health Triad" class="w-full h-48 object-contain rounded-lg mb-4">
-                <h4 class="text-xl font-bold mb-4">The Complete Gut Health Solution</h4>
-                <ul class="space-y-3 mb-6">
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Biome ADK for Microbiome Balance</span>
-                  </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>CellTides for Digestive Regulation</span>
-                  </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Nutralize for Antioxidant Support</span>
-                  </li>
-                </ul>
-                <a href="https://nucleogenex.com/details/173/DickeyL" class="inline-flex items-center justify-center w-full px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors duration-300">
-                  Get Started Today
-                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="physical-wellness" class="content-section max-w-7xl mx-auto">
-        <!-- Physical Vitality Content -->
-        <div class="bg-gradient-to-br from-cyan-50 to-white rounded-xl shadow-lg p-8 mb-8">
-          <h2 class="text-3xl font-bold text-gray-900 mb-6">Transform Your Hydration</h2>
-          
-          <!-- Benefits Section -->
-          <div class="mb-12">
-            <h3 class="text-2xl font-bold text-gray-900 mb-6">The Power of Perfect Water</h3>
-            <div class="grid md:grid-cols-2 gap-8">
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Pure as Reverse Osmosis</h4>
-                  <p class="text-gray-600">Get the purest water possible at a fraction of traditional system costs.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Essential Minerals</h4>
-                  <p class="text-gray-600">Reintroduces six vital negatively charged minerals for optimal health.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Enhanced Alkalinity</h4>
-                  <p class="text-gray-600">Boosts pH up to 9.0 for better hydration and wellness.</p>
-                </div>
-              </div>
-              <div class="flex items-start space-x-4">
-                <svg class="w-6 h-6 text-cyan-600 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <h4 class="font-semibold mb-2">Antioxidant Power</h4>
-                  <p class="text-gray-600">Hydrogen infusion provides powerful antioxidant benefits with -700mV ORP.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Product Section -->
-          <div class="bg-white rounded-xl shadow-md p-8">
-            <div class="max-w-2xl mx-auto">
-              <div class="bg-gradient-to-br from-cyan-50 to-white rounded-lg p-6">
-                <img src="images/ClarityPerfectWaterSystem.png" alt="Clarity Perfect Water System" class="w-full h-48 object-contain rounded-lg mb-4">
-                <h4 class="text-xl font-bold mb-4">The Ultimate Water Solution</h4>
-                <ul class="space-y-3 mb-6">
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Affordable: $97 one-time + $25/month</span>
-                  </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Mineral-rich, alkaline water</span>
-                  </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Hydrogen infusion for antioxidant power</span>
-                  </li>
-                  <li class="flex items-center">
-                    <svg class="w-5 h-5 text-cyan-600 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                    </svg>
-                    <span>Option to earn free by referring 5 people</span>
-                  </li>
-                </ul>
-                <a href="https://clarityperfect.com/8274/" class="inline-flex items-center justify-center w-full px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors duration-300">
-                  Transform Your Water Today
-                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <!-- Continue Button -->
+      <div class="text-center">
+        <button id="showResults" class="bg-cyan-600 text-white px-8 py-3 rounded-lg hover:bg-cyan-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+          Show My Recommendations
+        </button>
       </div>
     </div>
-  </section>
 
-  <!-- Keep existing footer -->
+    <!-- Results Section (hidden by default) -->
+    <div id="results" class="hidden">
+      <!-- Results content will be dynamically inserted here -->
+    </div>
+  </main>
 
+  <!-- Footer (keep your existing footer) -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Questionnaire Functionality
+      const options = document.querySelectorAll('.option-card');
+      const showResultsButton = document.getElementById('showResults');
+      const questionnaireSection = document.getElementById('questionnaire');
+      const resultsSection = document.getElementById('results');
+      
+      const selectedCategories = new Set();
+
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          option.classList.toggle('selected');
+          const category = option.dataset.category;
+          
+          if (selectedCategories.has(category)) {
+            selectedCategories.delete(category);
+          } else {
+            selectedCategories.add(category);
+          }
+
+          showResultsButton.disabled = selectedCategories.size === 0;
+        });
+      });
+
+      showResultsButton.addEventListener('click', () => {
+        // Hide questionnaire with fade-out effect
+        questionnaireSection.style.opacity = '0';
+        questionnaireSection.style.transform = 'translateY(-20px)';
+        
+        setTimeout(() => {
+          questionnaireSection.classList.add('hidden');
+          resultsSection.classList.remove('hidden');
+          
+          // Generate results HTML based on selected categories
+          let resultsHTML = `
+            <div class="slide-up">
+              <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Your Personalized Wellness Plan</h2>
+              <div class="space-y-8">
+          `;
+
+          // Add relevant content for each selected category
+          if (selectedCategories.has('energy')) {
+            resultsHTML += `
+              <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Energy Optimization</h3>
+                <p class="text-gray-600 mb-4">Our gut health triad helps optimize nutrient absorption and energy production.</p>
+                <!-- Add more specific recommendations -->
+              </div>
+            `;
+          }
+
+          if (selectedCategories.has('gut')) {
+            resultsHTML += `
+              <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
+                <h3 class="text-xl font-semibold text-gray-900 mb-4">Gut Health Solutions</h3>
+                <p class="text-gray-600 mb-4">Transform your digestive health with our comprehensive approach.</p>
+                <!-- Add more specific recommendations -->
+              </div>
+            `;
+          }
+
+          // Add similar blocks for other categories...
+
+          resultsHTML += `
+              </div>
+              <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors duration-300">
+                  Start Your Transformation
+                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          `;
+
+          resultsSection.innerHTML = resultsHTML;
+
+          // Trigger animation for results
+          setTimeout(() => {
+            resultsSection.querySelector('.slide-up').classList.add('visible');
+          }, 100);
+        }, 300);
+      });
+    });
+  </script>
+  <!-- Make sure scripts.js is loaded -->
   <script src="scripts.js"></script>
 </body>
 </html> 
