@@ -44,6 +44,48 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* Construction Banner Styles */
+    .construction-banner {
+      background: repeating-linear-gradient(
+        45deg,
+        #ffd700,
+        #ffd700 10px,
+        #000000 10px,
+        #000000 20px
+      );
+      background-size: 200% 200%;
+      animation: move-stripes 20s linear infinite;
+      padding: 20px;
+      margin-bottom: 2rem;
+    }
+
+    .construction-text {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #dc2626;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes move-stripes {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 200% 0;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
   </style>
 </head>
 <body class="bg-gray-50">
@@ -87,6 +129,13 @@
           <a href="about.html" class="block text-lg text-white hover:text-cyan-200 transition-colors duration-300">About Us</a>
         </nav>
       </div>
+    </div>
+  </div>
+
+  <!-- Construction Banner -->
+  <div class="construction-banner">
+    <div class="bg-white bg-opacity-90 py-4">
+      <h1 class="construction-text">🚧 This Page Is Under Construction 🚧</h1>
     </div>
   </div>
 
