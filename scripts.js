@@ -104,14 +104,14 @@ document.addEventListener('DOMContentLoaded', function() {
   // Create observers for different animation types
   const slideObserver = createScrollAnimation({ 
     once: false,
-    threshold: 0.1,
-    rootMargin: '-50px'
+    threshold: 0.01,
+    rootMargin: '100px 0px -50px 0px'
   });
 
   const fadeObserver = createScrollAnimation({ 
     once: false,
-    threshold: 0.1,
-    rootMargin: '-50px'
+    threshold: 0.01,
+    rootMargin: '100px 0px -50px 0px'
   });
 
   // Debug logging
