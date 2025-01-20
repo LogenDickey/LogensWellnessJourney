@@ -1,4 +1,99 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Parallax Scrolling Effect
+  const parallaxImages = document.querySelectorAll('.hero-image');
+  const heroSection = document.querySelector('.hero-section');
+  let ticking = false;
+
+  function updateParallax() {
+    if (!heroSection) return;
+    
+    const scrolled = window.pageYOffset;
+    const heroHeight = heroSection.offsetHeight;
+    const heroBottom = heroSection.offsetTop + heroHeight;
+    
+    // Only apply parallax effect while the hero section is in view
+    if (scrolled <= heroBottom) {
+      parallaxImages.forEach(image => {
+        if (image.classList.contains('active')) {
+          const speed = 0.4; // Adjust this value to change parallax intensity
+          const yPos = scrolled * speed;
+          image.style.transform = `translate3d(0, ${yPos}px, 0) scale(1.05)`;
+        }
+      });
+    }
+    
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateParallax();
+      });
+      ticking = true;
+    }
+  });
+
+  // Hero Image Rotation
+  const heroImages = document.querySelectorAll('.hero-image');
+  let currentImageIndex = 0;
+
+  function rotateImages() {
+    const currentImage = heroImages[currentImageIndex];
+    const nextIndex = (currentImageIndex + 1) % heroImages.length;
+    const nextImage = heroImages[nextIndex];
+
+    // Prepare next image with no transition
+    nextImage.style.transition = 'none';
+    nextImage.style.opacity = '0';
+    
+    // Force browser reflow
+    void nextImage.offsetHeight;
+
+    // Add active class to next image
+    nextImage.classList.add('active');
+    
+    // Apply current scroll position to new image
+    const scrolled = window.pageYOffset;
+    const speed = 0.4;
+    const yPos = scrolled * speed;
+    nextImage.style.transform = `translate3d(0, ${yPos}px, 0) scale(1.05)`;
+    
+    // Start transitions
+    setTimeout(() => {
+      // Set up smooth transitions
+      currentImage.style.transition = 'opacity 2s ease-in-out';
+      nextImage.style.transition = 'opacity 2s ease-in-out';
+      
+      // Fade out current image
+      currentImage.style.opacity = '0';
+      
+      // After fade out is complete, remove classes
+      setTimeout(() => {
+        currentImage.classList.remove('active');
+      }, 2000);
+      
+      // Fade in next image
+      nextImage.style.opacity = '0.9';
+    }, 50);
+
+    // Update index
+    currentImageIndex = nextIndex;
+  }
+
+  if (heroImages.length > 0) {
+    // Show first image immediately with animation
+    const firstImage = heroImages[0];
+    firstImage.style.transition = 'opacity 2s ease-in-out';
+    firstImage.classList.add('active');
+    firstImage.style.opacity = '0.9';
+
+    // Start rotation after a delay
+    setTimeout(() => {
+      setInterval(rotateImages, 8000);
+    }, 8000);
+  }
+
   // Mobile Menu Functionality
   const openMenuButton = document.getElementById('openMenu');
   const closeMenuButton = document.getElementById('closeMenu');
@@ -83,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
     animateCounter(customersCounter, 10); // Set to 10 as placeholder
   }
 
-  // Enhanced scroll animations with bi-directional support
+  // Enhanced scroll animations with earlier triggers
   function createScrollAnimation(options = {}) {
     return new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -101,17 +196,17 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Create observers for different animation types
+  // Create observers for different animation types with earlier triggers
   const slideObserver = createScrollAnimation({ 
     once: false,
     threshold: 0.01,
-    rootMargin: '100px 0px -50px 0px'
+    rootMargin: '700px 0px 130px 0px'  // Changed to 130px to have animation trigger earlier
   });
 
   const fadeObserver = createScrollAnimation({ 
     once: false,
     threshold: 0.01,
-    rootMargin: '100px 0px -50px 0px'
+    rootMargin: '700px 0px 130px 0px'  // Changed to 130px to have animation trigger earlier
   });
 
   // Debug logging
