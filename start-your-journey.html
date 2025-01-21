@@ -2,31 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="Discover your personalized wellness path with our quick assessment." />
+  <meta name="description" content="Join the Wellness Warriors community pre-launch and be part of our founding members." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Start Your Journey | Wellness Assessment</title>
+  <title>Pre-Launch | Wellness Warriors</title>
   <link rel="icon" href="favicon.ico">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+      position: relative;
+    }
+    html {
+      overflow-x: hidden;
+      width: 100%;
     }
 
-    .option-card {
-      transition: all 0.3s ease;
-    }
-
-    .option-card.selected {
-      border-color: #0891b2;
-      background-color: #ecfeff;
-    }
-
-    /* Animation classes */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      will-change: opacity, transform;
     }
 
     .fade-in.visible {
@@ -34,61 +32,79 @@
       transform: translateY(0);
     }
 
-    .slide-up {
+    .slide-in-up {
       opacity: 0;
       transform: translateY(30px);
-      transition: all 0.5s ease-out;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
     }
 
-    .slide-up.visible {
+    .slide-in-up.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(0);
     }
 
-    /* Construction Banner Styles */
-    .construction-banner {
-      background: repeating-linear-gradient(
-        45deg,
-        #ffd700,
-        #ffd700 10px,
-        #000000 10px,
-        #000000 20px
-      );
-      background-size: 200% 200%;
-      animation: move-stripes 20s linear infinite;
-      padding: 20px;
-      margin-bottom: 2rem;
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+
+    @font-face {
+      font-display: block;
+      font-family: Roboto;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
     }
 
-    .construction-text {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #dc2626;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      animation: pulse 2s ease-in-out infinite;
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 600;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
     }
 
-    @keyframes move-stripes {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 200% 0;
-      }
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 700;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
     }
 
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
+    #sib-container input:-ms-input-placeholder {
+      text-align: left;
+      font-family: Helvetica, sans-serif;
+      color: #c0ccda;
+    }
+
+    #sib-container input::placeholder {
+      text-align: left;
+      font-family: Helvetica, sans-serif;
+      color: #c0ccda;
+    }
+
+    #sib-container textarea::placeholder {
+      text-align: left;
+      font-family: Helvetica, sans-serif;
+      color: #c0ccda;
+    }
+
+    #sib-container a {
+      text-decoration: underline;
+      color: #2BB2FC;
+    }
+
+    .rocket {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
     }
   </style>
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body class="bg-gray-50">
+  <!-- Header -->
   <header class="bg-white shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
       <a href="index.html" class="flex items-center space-x-3">
@@ -103,10 +119,10 @@
         <a href="about.html" class="text-gray-700 hover:text-cyan-600">About Us</a>
       </nav>
       <button id="openMenu" class="md:hidden relative w-10 h-10 bg-gradient-to-r from-cyan-600 to-cyan-700 rounded-lg shadow-lg overflow-hidden group">
-        <div class="absolute inset-0 flex flex-col items-center justify-center space-y-1.5">
-          <div class="w-6 h-0.5 bg-white rounded-full transition-transform duration-300"></div>
-          <div class="w-6 h-0.5 bg-white rounded-full"></div>
-          <div class="w-6 h-0.5 bg-white rounded-full transition-transform duration-300"></div>
+        <div class="absolute inset-0 w-full h-full flex flex-col items-center justify-center space-y-1.5 transition-transform duration-300 group-hover:scale-110">
+          <div class="w-5 h-0.5 bg-white rounded-full transition-transform duration-300"></div>
+          <div class="w-5 h-0.5 bg-white rounded-full transition-transform duration-300"></div>
+          <div class="w-5 h-0.5 bg-white rounded-full transition-transform duration-300"></div>
         </div>
       </button>
     </div>
@@ -115,11 +131,11 @@
   <!-- Mobile Menu -->
   <div id="mobileMenu" class="fixed inset-0 bg-gray-800 bg-opacity-50 backdrop-blur-sm z-50 hidden transition-opacity duration-300 opacity-0">
     <div class="bg-gradient-to-br from-cyan-600 to-cyan-800 w-64 h-full ml-auto transform transition-transform duration-300 translate-x-full">
-      <div class="p-6 flex flex-col">
+      <div class="p-6">
         <div class="flex justify-end mb-8">
           <button id="closeMenu" class="text-white hover:text-cyan-200 transition-colors duration-300">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
@@ -132,183 +148,177 @@
     </div>
   </div>
 
-  <!-- Construction Banner -->
-  <div class="construction-banner">
-    <div class="bg-white bg-opacity-90 py-4">
-      <h1 class="construction-text">🚧 This Page Is Under Construction 🚧</h1>
-    </div>
-  </div>
-
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 py-12">
-    <!-- Questionnaire Section -->
-    <div id="questionnaire" class="fade-in visible">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
-        Let's Discover Your Wellness Path
-      </h1>
-      <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-        Select all the areas where you'd like to see improvement. This will help us provide personalized recommendations for your journey.
+    <!-- Pre-launch Header -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center space-x-3 mb-6">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 slide-in-up">Pre-Launch of Wellness Warriors!</h1>
+        <svg class="w-10 h-10 text-cyan-600 rocket slide-in-up delay-200" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12.5 2C9 2 6.5 4 6.5 7C6.5 9 8 11.5 9.5 14C11 16.5 12 19 12 21C12 21.5 12.5 22 13 22C13.5 22 14 21.5 14 21C14 19 15 16.5 16.5 14C18 11.5 19.5 9 19.5 7C19.5 4 17 2 13.5 2H12.5Z"/>
+        </svg>
+      </div>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto slide-in-up delay-300">
+        Join us at the beginning of something special. We're building a community focused on sustainable wellness through natural solutions and proven strategies.
       </p>
+    </div>
 
-      <!-- Options Grid -->
-      <div class="grid md:grid-cols-2 gap-6 mb-12">
-        <!-- Energy Levels -->
-        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="energy">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900">Energy Levels</h3>
-          </div>
-          <p class="text-gray-600">Feeling tired or experiencing energy crashes throughout the day</p>
-        </div>
-
-        <!-- Gut Health -->
-        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="gut">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900">Gut Health</h3>
-          </div>
-          <p class="text-gray-600">Digestive issues, bloating, or irregular gut function</p>
-        </div>
-
-        <!-- Weight Management -->
-        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="weight">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900">Weight Management</h3>
-          </div>
-          <p class="text-gray-600">Struggling with weight goals or maintaining healthy weight</p>
-        </div>
-
-        <!-- Hydration -->
-        <div class="option-card cursor-pointer border-2 border-gray-200 rounded-xl p-6 hover:shadow-md" data-category="hydration">
-          <div class="flex items-center mb-4">
-            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
-              </svg>
-            </div>
-            <h3 class="text-xl font-semibold text-gray-900">Hydration</h3>
-          </div>
-          <p class="text-gray-600">Not drinking enough water or feeling dehydrated</p>
-        </div>
+    <!-- Content Cards -->
+    <div class="grid md:grid-cols-2 gap-8 mb-16">
+      <!-- What's Coming Card -->
+      <div class="bg-white rounded-xl shadow-md p-8 slide-in-up delay-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">What's Coming</h2>
+        <p class="text-gray-600 mb-6">
+          In the coming weeks, you'll receive carefully curated content about natural wellness solutions and strategies that have helped transform lives, including my own journey to better health.
+        </p>
+        <ul class="space-y-4 text-gray-600">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-cyan-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Weekly wellness challenges designed to create lasting change</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-cyan-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Early access to our community features and resources</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-cyan-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Exclusive insights into natural wellness strategies</span>
+          </li>
+        </ul>
       </div>
 
-      <!-- Continue Button -->
-      <div class="text-center">
-        <button id="showResults" class="bg-cyan-600 text-white px-8 py-3 rounded-lg hover:bg-cyan-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-          Show My Recommendations
-        </button>
+      <!-- Founding Members Card -->
+      <div class="bg-white rounded-xl shadow-md p-8 slide-in-up delay-300">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Founding Member Benefits</h2>
+        <p class="text-gray-600 mb-6">
+          As a founding member, you'll be at the forefront of our community, enjoying exclusive benefits and early access to everything we create.
+        </p>
+        <ul class="space-y-4 text-gray-600">
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-cyan-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Special pre-launch content and community events</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-cyan-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Direct updates about our progress and upcoming features</span>
+          </li>
+          <li class="flex items-start">
+            <svg class="w-6 h-6 text-cyan-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Priority access to new wellness resources and guides</span>
+          </li>
+        </ul>
       </div>
     </div>
 
-    <!-- Results Section (hidden by default) -->
-    <div id="results" class="hidden">
-      <!-- Results content will be dynamically inserted here -->
-    </div>
+    <!-- Newsletter Section -->
+    <section class="bg-gradient-to-br from-cyan-50 to-white py-16 rounded-2xl">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="slide-in-up text-3xl font-bold text-gray-900 mb-4">Join Our Founding Members</h2>
+        <p class="slide-in-up delay-200 text-gray-600 mb-8">
+          Be the first to know about our upcoming features and get exclusive early access to our community.
+        </p>
+        <div class="slide-in-up delay-400">
+          <!-- Form with Brevo Integration -->
+          <div class="sib-form">
+            <div id="sib-form-container" class="sib-form-container">
+              <div id="error-message" class="hidden mb-4 p-4 text-red-700 bg-red-100 border-l-4 border-red-500 rounded-lg shadow-md transition-all duration-300">
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Please enter a valid email address.</span>
+                </div>
+              </div>
+              <div id="success-message" class="hidden mb-4 p-4 text-green-700 bg-green-100 border-l-4 border-green-500 rounded-lg shadow-md transition-all duration-300">
+                <div class="flex items-center">
+                  <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span>Thanks for becoming a warrior! Check your email for more information.</span>
+                </div>
+              </div>
+              <form 
+                id="sib-form"
+                method="POST" 
+                action="https://07e9be97.sibforms.com/serve/MUIFACwSVZwG0jg3WSll43keqtYfVNCGop844ajoIPng-JMmKqBWww_iK5cd28UZZIyaT6yqZ7mMdOGwRuDu_FEJEvgQ8cK4m_Z0M9VtZ0mwBvr7bVJ02PgsIArQVyCI-XCfnGciqffZkSKsnNbOY42w4lSGZleWB7yC-9tKsL14Vqt0jGL-sgItRJW2gjI3f8ET95GapeHWEAyY"
+                data-type="subscription" 
+                class="max-w-md mx-auto"
+              >
+                <div class="sib-form-block">
+                  <div class="alert alert-success sib-alert-success hidden"></div>
+                  <div class="alert alert-error sib-alert-error hidden">
+                    <p>Please enter a valid email address.</p>
+                  </div>
+                  <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="entry__field flex-1">
+                      <input 
+                        type="email" 
+                        id="EMAIL"
+                        name="EMAIL" 
+                        autocomplete="off"
+                        placeholder="Enter your email" 
+                        data-required="true"
+                        required
+                        class="input w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 outline-none"
+                      >
+                    </div>
+                    <button 
+                      class="sib-form-block__button sib-form-block__button-with-loader bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                      form="sib-form"
+                      type="submit"
+                    >
+                      <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                        <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                      </svg>
+                      Join the Journey
+                    </button>
+                  </div>
+                  <input type="text" name="email_address_check" value="" class="hidden">
+                  <input type="hidden" name="locale" value="en">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer (keep your existing footer) -->
+  <!-- Footer -->
+  <footer class="bg-white border-t border-gray-200 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-gray-600">
+      &copy; <span id="year"></span> Logen's Wellness Journey. All rights reserved.
+    </div>
+  </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Questionnaire Functionality
-      const options = document.querySelectorAll('.option-card');
-      const showResultsButton = document.getElementById('showResults');
-      const questionnaireSection = document.getElementById('questionnaire');
-      const resultsSection = document.getElementById('results');
-      
-      const selectedCategories = new Set();
-
-      options.forEach(option => {
-        option.addEventListener('click', () => {
-          option.classList.toggle('selected');
-          const category = option.dataset.category;
-          
-          if (selectedCategories.has(category)) {
-            selectedCategories.delete(category);
-          } else {
-            selectedCategories.add(category);
-          }
-
-          showResultsButton.disabled = selectedCategories.size === 0;
-        });
-      });
-
-      showResultsButton.addEventListener('click', () => {
-        // Hide questionnaire with fade-out effect
-        questionnaireSection.style.opacity = '0';
-        questionnaireSection.style.transform = 'translateY(-20px)';
-        
-        setTimeout(() => {
-          questionnaireSection.classList.add('hidden');
-          resultsSection.classList.remove('hidden');
-          
-          // Generate results HTML based on selected categories
-          let resultsHTML = `
-            <div class="slide-up">
-              <h2 class="text-3xl font-bold text-gray-900 text-center mb-8">Your Personalized Wellness Plan</h2>
-              <div class="space-y-8">
-          `;
-
-          // Add relevant content for each selected category
-          if (selectedCategories.has('energy')) {
-            resultsHTML += `
-              <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-yellow-500">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Energy Optimization</h3>
-                <p class="text-gray-600 mb-4">Our gut health triad helps optimize nutrient absorption and energy production.</p>
-                <!-- Add more specific recommendations -->
-              </div>
-            `;
-          }
-
-          if (selectedCategories.has('gut')) {
-            resultsHTML += `
-              <div class="bg-white rounded-xl shadow-md p-6 border-l-4 border-green-500">
-                <h3 class="text-xl font-semibold text-gray-900 mb-4">Gut Health Solutions</h3>
-                <p class="text-gray-600 mb-4">Transform your digestive health with our comprehensive approach.</p>
-                <!-- Add more specific recommendations -->
-              </div>
-            `;
-          }
-
-          // Add similar blocks for other categories...
-
-          resultsHTML += `
-              </div>
-              <div class="text-center mt-12">
-                <a href="#" class="inline-flex items-center justify-center px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-colors duration-300">
-                  Start Your Transformation
-                  <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          `;
-
-          resultsSection.innerHTML = resultsHTML;
-
-          // Trigger animation for results
-          setTimeout(() => {
-            resultsSection.querySelector('.slide-up').classList.add('visible');
-          }, 100);
-        }, 300);
-      });
-    });
-  </script>
-  <!-- Make sure scripts.js is loaded -->
+  <!-- Scripts -->
   <script src="scripts.js"></script>
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Please enter a valid email address.";
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank.";
+    window.GENERIC_INVALID_MESSAGE = "Please enter a valid email address.";
+    window.translation = {
+      common: {
+        selectedList: '{quantity} list selected',
+        selectedLists: '{quantity} lists selected'
+      }
+    };
+    var AUTOHIDE = Boolean(1);
+  </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html> 
