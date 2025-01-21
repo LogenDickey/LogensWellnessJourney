@@ -318,4 +318,67 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.fade-in').forEach(element => {
     observer.observe(element);
   });
+
+  // Form submission handling
+  const forms = document.querySelectorAll('#sib-form');
+  forms.forEach(form => {
+    // Listen for Brevo's success event
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Please enter a valid email address.";
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank.";
+    window.GENERIC_INVALID_MESSAGE = "Please enter a valid email address.";
+    window.translation = {
+      common: {
+        selectedList: '{quantity} list selected',
+        selectedLists: '{quantity} lists selected'
+      }
+    };
+    var AUTOHIDE = Boolean(0);
+
+    // Handle form submission
+    form.addEventListener('submit', function(e) {
+      const formWrapper = form.closest('.slide-in-up, .max-w-md');
+      const parentElement = formWrapper ? formWrapper.parentElement : form.parentElement;
+      const successMessage = parentElement.querySelector('#success-message');
+      const errorMessage = parentElement.querySelector('#error-message');
+      
+      // Hide any existing messages first
+      if (successMessage) successMessage.classList.add('hidden');
+      if (errorMessage) errorMessage.classList.add('hidden');
+      
+      const emailInput = form.querySelector('input[type="email"]');
+      const emailValue = emailInput ? emailInput.value.trim() : '';
+      
+      // Basic email validation regex
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      if (!emailValue || !emailRegex.test(emailValue)) {
+        e.preventDefault();
+        if (errorMessage) {
+          errorMessage.classList.remove('hidden');
+        }
+        return;
+      }
+
+      // Show success message after a short delay to allow Brevo to process
+      setTimeout(() => {
+        if (successMessage) {
+          successMessage.classList.remove('hidden');
+        }
+      }, 1000);
+    });
+
+    // Listen for Brevo's success callback
+    window.sibFormCallback = function(e) {
+      if (e && e.detail && e.detail.success === true) {
+        const formWrapper = form.closest('.slide-in-up, .max-w-md');
+        const parentElement = formWrapper ? formWrapper.parentElement : form.parentElement;
+        const successMessage = parentElement.querySelector('#success-message');
+        if (successMessage) {
+          successMessage.classList.remove('hidden');
+        }
+      }
+    };
+  });
 }); 

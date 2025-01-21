@@ -66,7 +66,51 @@
     .delay-400 { transition-delay: 400ms; }
     .delay-500 { transition-delay: 500ms; }
     .delay-600 { transition-delay: 600ms; }
+
+    @font-face {
+      font-display: block;
+      font-family: Roboto;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff) format("woff")
+    }
+
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 600;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff) format("woff")
+    }
+
+    @font-face {
+      font-display: fallback;
+      font-family: Roboto;
+      font-weight: 700;
+      src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2) format("woff2"), url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff) format("woff")
+    }
+
+    #sib-container input:-ms-input-placeholder {
+      text-align: left;
+      font-family: Helvetica, sans-serif;
+      color: #c0ccda;
+    }
+
+    #sib-container input::placeholder {
+      text-align: left;
+      font-family: Helvetica, sans-serif;
+      color: #c0ccda;
+    }
+
+    #sib-container textarea::placeholder {
+      text-align: left;
+      font-family: Helvetica, sans-serif;
+      color: #c0ccda;
+    }
+
+    #sib-container a {
+      text-decoration: underline;
+      color: #2BB2FC;
+    }
   </style>
+  <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 </head>
 <body class="bg-gray-50 text-gray-800">
   <!-- Header -->
@@ -340,11 +384,43 @@
               <img src="images/GutHealthTriad.png" alt="Gut Health Triad" class="w-full h-48 object-cover rounded-lg mb-6">
               <h3 class="text-2xl font-bold text-gray-900 mb-4">Gut Health Triad</h3>
               <p class="text-gray-600 mb-6">
-                The cornerstone of my gut health journey. This powerful compound supports digestive health and nutrient absorption, helping maintain a balanced gut microbiome.
+                A revolutionary gut health solution combining cutting-edge postbiotics, prebiotics, and nucleotides to strengthen your gut lining, improve digestion, and enhance microbiome balance. This powerful formula includes tributyrin and antioxidants like curcumin and resveratrol to naturally reduce inflammation, while supporting immunity and whole-body wellness with vitamins D3 and K2.
               </p>
-              <a href="https://nucleogenex.com/details/173/DickeyL/qr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-semibold">
+              <ul class="space-y-4 mb-6">
+                <li class="flex items-start fade-in">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Combines cutting-edge postbiotics, prebiotics, and nucleotides to strengthen the gut lining, improve digestion, and enhance microbiome balance</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 200ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Powered by tributyrin and antioxidants like curcumin and resveratrol to calm gut inflammation and promote digestive harmony</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 400ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Supports immunity with nucleotides and vitamin C, reducing susceptibility to gut-related issues and common illnesses</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 600ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Includes vitamins D3 and K2 for enhanced calcium absorption, bone health, and systemic anti-inflammatory benefits</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 800ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Scientifically proven ingredients work synergistically to improve gut health, energy levels, and nutrient absorption</span>
+                </li>
+              </ul>
+              <a href="https://nucleogenex.com/details/173/DickeyL/qr" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center w-full px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-all duration-300 transform hover:scale-[1.02]">
                 Learn More
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
               </a>
@@ -356,17 +432,49 @@
             <div class="relative">
               <div class="absolute -top-4 -right-4 bg-cyan-100 rounded-full p-3">
                 <svg class="w-6 h-6 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3.0375C8.0075 7.125 6 10.1625 6 12.75C6 16.0625 8.6875 18.75 12 18.75C15.3125 18.75 18 16.0625 18 12.75C18 10.1625 15.9925 7.125 12 3.0375Z"/>
                 </svg>
               </div>
               <img src="images/ClarityPerfectWaterSystem.png" alt="Clarity Perfect Water" class="w-full h-48 object-cover rounded-lg mb-6">
               <h3 class="text-2xl font-bold text-gray-900 mb-4">Clarity Perfect Water</h3>
               <p class="text-gray-600 mb-6">
-                Revolutionary hydration solution that transformed my energy levels and overall wellness. Experience the difference proper hydration can make.
+                The Clarity Perfect Water System delivers exceptional water quality through advanced filtration and alkalinization processes. This revolutionary system balances blood pH, detoxifies the body, and provides powerful antioxidant benefits through molecular hydrogen enrichment. With its high-tech purification stages, it ensures complete removal of harmful contaminants while promoting optimal health and longevity.
               </p>
-              <a href="https://clarityperfect.com/8274/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-cyan-600 hover:text-cyan-700 font-semibold">
+              <ul class="space-y-4 mb-6">
+                <li class="flex items-start fade-in">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Advanced filtration technology ensures 100% removal of bacteria, viruses, and pollutants, providing the purest water possible for your health</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 200ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Molecular hydrogen enrichment provides powerful antioxidant benefits, effectively slowing aging and preventing chronic diseases</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 400ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Perfect pH balance and essential minerals support immune system function, metabolic health, and overall vitality</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 600ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Enhanced blood circulation and tissue hydration promote better weight management and sustained energy levels</span>
+                </li>
+                <li class="flex items-start fade-in" style="animation-delay: 800ms;">
+                  <svg class="w-6 h-6 text-cyan-600 mr-3 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                  </svg>
+                  <span class="text-gray-700">Sustainable one-year usage capacity with eco-friendly components, making it both cost-effective and environmentally responsible</span>
+                </li>
+              </ul>
+              <a href="https://clarityperfect.com/8274/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center w-full px-6 py-3 bg-cyan-600 text-white font-semibold rounded-lg hover:bg-cyan-700 transition-all duration-300 transform hover:scale-[1.02]">
                 Learn More
-                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-5 h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
                 </svg>
               </a>
@@ -390,6 +498,79 @@
           </a>
         </div>
       </section>
+
+      <!-- Newsletter Section -->
+      <section class="bg-gradient-to-br from-cyan-50 to-white py-16">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 class="slide-in-up text-3xl font-bold text-gray-900 mb-4">Join the Wellness Warriors Community</h2>
+          <p class="slide-in-up delay-200 text-gray-600 mb-8">
+            Get exclusive weekly insights, transformation tips, and early access to new recommendations.
+          </p>
+          <div class="slide-in-up delay-400">
+            <!-- Form with Brevo Integration -->
+            <div class="sib-form">
+              <div id="sib-form-container" class="sib-form-container">
+                <div id="error-message" class="hidden mb-4 p-4 text-red-700 bg-red-100 border-l-4 border-red-500 rounded-lg shadow-md transition-all duration-300">
+                  <div class="flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Please enter a valid email address.</span>
+                  </div>
+                </div>
+                <div id="success-message" class="hidden mb-4 p-4 text-green-700 bg-green-100 border-l-4 border-green-500 rounded-lg shadow-md transition-all duration-300">
+                  <div class="flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Thanks for becoming a warrior! Check your email for more information.</span>
+                  </div>
+                </div>
+                <form 
+                  id="sib-form"
+                  method="POST" 
+                  action="https://07e9be97.sibforms.com/serve/MUIFACwSVZwG0jg3WSll43keqtYfVNCGop844ajoIPng-JMmKqBWww_iK5cd28UZZIyaT6yqZ7mMdOGwRuDu_FEJEvgQ8cK4m_Z0M9VtZ0mwBvr7bVJ02PgsIArQVyCI-XCfnGciqffZkSKsnNbOY42w4lSGZleWB7yC-9tKsL14Vqt0jGL-sgItRJW2gjI3f8ET95GapeHWEAyY"
+                  data-type="subscription" 
+                  class="max-w-md mx-auto"
+                >
+                  <div class="sib-form-block">
+                    <div class="alert alert-success sib-alert-success hidden"></div>
+                    <div class="alert alert-error sib-alert-error hidden">
+                      <p>Please enter a valid email address.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                      <div class="entry__field flex-1">
+                        <input 
+                          type="email" 
+                          id="EMAIL"
+                          name="EMAIL" 
+                          autocomplete="off"
+                          placeholder="Enter your email" 
+                          data-required="true"
+                          required
+                          class="input w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 outline-none"
+                        >
+                      </div>
+                      <button 
+                        class="sib-form-block__button sib-form-block__button-with-loader bg-cyan-600 text-white px-6 py-3 rounded-lg hover:bg-cyan-700 transition-colors duration-300 whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed"
+                        form="sib-form"
+                        type="submit"
+                      >
+                        <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                          <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                        </svg>
+                        Join the Journey
+                      </button>
+                    </div>
+                    <input type="text" name="email_address_check" value="" class="hidden">
+                    <input type="hidden" name="locale" value="en">
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -402,5 +583,22 @@
 
   <!-- Single script tag -->
   <script src="scripts.js"></script>
+
+  <!-- Add Brevo's required scripts at the bottom of your body tag -->
+  <script>
+    window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
+    window.LOCALE = 'en';
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "Please enter a valid email address.";
+    window.REQUIRED_ERROR_MESSAGE = "This field cannot be left blank.";
+    window.GENERIC_INVALID_MESSAGE = "Please enter a valid email address.";
+    window.translation = {
+      common: {
+        selectedList: '{quantity} list selected',
+        selectedLists: '{quantity} lists selected'
+      }
+    };
+    var AUTOHIDE = Boolean(1);
+  </script>
+  <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 </body>
 </html>
